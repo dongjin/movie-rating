@@ -17,6 +17,14 @@ pipeline {
                 }
             }
         }
+         stage('Run') {
+            agent { docker 'openjdk:8-jre' }
+            steps {
+                echo 'Hello, JDK'
+                sh 'java -version'
+                sh 'java -jar target/movie-rating-0.0.1-SNAPSHOT.jar'
+            }
+        }
 
         stage ('Deployment') {
             steps {
