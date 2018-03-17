@@ -1,8 +1,8 @@
 
 pipeline {
-    //agent any
+    agent any
 
-    agent { dockerfile true }
+ //   agent { dockerfile true }
  //agent {
  //      docker {
 //            image 'maven:3-alpine'
@@ -15,6 +15,7 @@ pipeline {
             steps {
                 withMaven(maven : 'maven_3_5_3') {
                     sh 'mvn clean compile'
+                    archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
                 }
             }
         }
@@ -30,8 +31,8 @@ pipeline {
         stage('Deploy to Dev') {
             steps {
 
-                // sh 'java -jar target/movie-rating-0.0.1-SNAPSHOT.jar'
-                echo 'write deployment script here'
+                sh 'java -jar target/movie-rating-0.0.1-SNAPSHOT.jar'
+                echo 'write deployment script here'`
             }
         }
 
