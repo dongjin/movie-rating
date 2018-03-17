@@ -32,7 +32,9 @@ pipeline {
 
         stage('Deliver') {
             steps {
-                sh 'java -jar target/movie-rating-0.0.1-SNAPSHOT.jar'
+
+                // sh 'java -jar target/movie-rating-0.0.1-SNAPSHOT.jar'
+                echo 'write deployment script here'
             }
         }
     }
