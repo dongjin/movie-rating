@@ -31,7 +31,8 @@ pipeline {
         stage('Deploy to Dev') {
             steps {
 
-                sh 'java -jar target/movie-rating-0.0.1-SNAPSHOT.jar'
+//                sh 'java -jar target/movie-rating-0.0.1-SNAPSHOT.jar'
+                sh 'make publish'
                 echo 'write deployment script here'
             }
         }
