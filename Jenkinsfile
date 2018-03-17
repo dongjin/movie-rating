@@ -30,7 +30,7 @@ pipeline {
         stage('Gate to QA') {
             steps {
                 timeout(time: 7, unit: 'DAYS') {
-                    milestone(10)
+                    milestone(1)
                     input message: 'Do you want to deploy to QA env ?', submitter: 'authenticated'
                 }
             }
@@ -46,7 +46,7 @@ pipeline {
          stage('Gate to UAT') {
              steps {
                  timeout(time: 7, unit: 'DAYS') {
-                     milestone(10)
+                     milestone(2)
                      input message: 'Do you want to deploy to UAT env ?', submitter: 'authenticated'
                  }
              }
