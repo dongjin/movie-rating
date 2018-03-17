@@ -19,23 +19,43 @@ pipeline {
             }
         }
 
-  stage('Gate to deliver') {
-            steps {
-                timeout(time: 7, unit: 'DAYS') {
-                    milestone(10)
-                    input message: 'Do you want to deploy to qat ?', submitter: 'authenticated'
-                }
-            }
-        }
-
-
-
-        stage('Deliver') {
+        stage('Deploy to Dev') {
             steps {
 
                 // sh 'java -jar target/movie-rating-0.0.1-SNAPSHOT.jar'
                 echo 'write deployment script here'
             }
         }
+
+        stage('Gate to QA') {
+            steps {
+                timeout(time: 7, unit: 'DAYS') {
+                    milestone(10)
+                    input message: 'Do you want to deploy to QA env ?', submitter: 'authenticated'
+                }
+            }
+        }
+
+        stage('Deploy to QA') {
+            steps {
+
+                echo 'write deployment script here'
+            }
+        }
+
+         stage('Gate to UAT') {
+             steps {
+                 timeout(time: 7, unit: 'DAYS') {
+                     milestone(10)
+                     input message: 'Do you want to deploy to UAT env ?', submitter: 'authenticated'
+                 }
+             }
+         }
+
+         stage('Deploy to UAT') {
+             steps {
+                echo 'write deployment script here'
+             }
+         }
     }
 }
