@@ -32,7 +32,7 @@ pipeline {
             steps {
 
 //                sh 'java -jar target/movie-rating-0.0.1-SNAPSHOT.jar'
-                sh 'make publish'
+//                sh 'make publish'
                 echo 'write deployment script here'
             }
         }
